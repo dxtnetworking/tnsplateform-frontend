@@ -11,8 +11,8 @@ class Signup extends React.Component {
       data: {
         email: this.email.value,
         password: this.password.value,
-        name: this.name.value,
-        nickname: this.nickname.value
+        prenom: this.prenom.value,
+        nom: this.nom.value
       },
     }).then((response) => {
       console.log(response);
@@ -36,12 +36,12 @@ class Signup extends React.Component {
             <Segment stacked>
               <form className="ui form" onSubmit={this.handleSignup} >
                 <div className="fluid field">
-                  <label for="name" className="">Nom</label>
-                  <input type="text" name="name" ref={(input) => this.name = input}/>
+                  <label for="prenom" className="">Prénom</label>
+                  <input type="text" name="prenom" ref={(input) => this.prenom = input}/>
                 </div>
                 <div className="fluid field">
-                  <label for="nickname" className="">Prénom</label>
-                  <input type="text" name="nickname" ref={(input) => this.nickname = input}/>
+                  <label for="nom" className="">Nom de famille</label>
+                  <input type="text" name="nom" ref={(input) => this.nom = input}/>
                 </div>
                 <div className="fluid field">
                   <label for="email" className="">Email</label>
