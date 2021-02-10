@@ -29,7 +29,7 @@ class Signup extends React.Component {
   render() {
     return (
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
-          <Grid.Column  style={{ maxWidth: 450 }}>
+          {/* <Grid.Column  style={{ maxWidth: 450 }}>
             <SUHeader as='h2' textAlign='center'>
               S'inscrire!
             </SUHeader>
@@ -56,7 +56,7 @@ class Signup extends React.Component {
                 </div>
               </form>
             </Segment>
-          </Grid.Column>
+          </Grid.Column> */}
         </Grid>
     );
   }

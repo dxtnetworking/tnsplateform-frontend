@@ -1,20 +1,17 @@
 import "./App.css";
 import routes from './routes'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-// import Login from "./components/Login";
-// import Accueil from "./components/Accueil";
-// import Signup from "./components/Signup";
-// import AppHeader from "./components/AppHeader";
+import { GlobalProvider } from "./context/Provider";
 
-const currentUser = function() {
-  const user = localStorage.getItem('user')
-  console.log(user)
-  return(user)
-}
+// const currentUser = function() {
+//   const user = localStorage.getItem('user')
+//   console.log(user)
+//   return(user)
+// }
 
 function App() {
   return (
-    <div className="App">
+    <GlobalProvider>
       <Router>
         <Switch>
           {
@@ -28,7 +25,7 @@ function App() {
             ))}
         </Switch>
       </Router>
-    </div>
+    </GlobalProvider>
   );
 }
 

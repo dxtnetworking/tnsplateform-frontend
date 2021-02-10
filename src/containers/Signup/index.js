@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useEffect }from 'react'
+import { signup } from '../../context/actions/signup'
+import AppHeader from './../../components/AppHeader';
+import SignupUI from './../../layout/Signup/index';
+import useForm from './useForm';
 
 function SignupContainer() {
+    useEffect(() => {
+        signup();
+    }, [])
+
     return (
         <div>
-            <h2>S'inscrire</h2>
+            <AppHeader/>
+            <SignupUI form={useForm()}/>
         </div>
     )
 }

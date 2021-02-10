@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Container } from 'semantic-ui-react';
+import { GlobalContext } from '../../context/Provider';
+import AppHeader from './../../components/AppHeader';
 
 function ProfileContainer() {
+    const context = useContext(GlobalContext);
+    console.log(context);
     return (
         <div>
-            <h2>Liste des membres</h2>
+            <AppHeader/>
+            <Container>
+                <h2>Liste des membres</h2>
+            </Container>          
         </div>
     )
 }

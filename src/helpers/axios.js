@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 
-const baseURL = "http://localhost:3001";
+const baseURL = process.env.REACT_APP_BACKEND_URL;
+console.log("BASE_URL", baseURL);
 let headers = {};
 
 if (localStorage.token) {
@@ -10,7 +11,7 @@ if (localStorage.token) {
 
 const axiosInstance = axios.create({
     baseURL: baseURL,
-    headers: headers,
+    headers,
 });
 
 export default axiosInstance;
