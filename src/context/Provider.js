@@ -9,6 +9,7 @@ export const GlobalProvider = ({ children }) => {
     const [authState, authDispatch] = useReducer(
         auth, 
         authInitialState);
+        
     const [profilesState, profilesDispatch] = useReducer(
         profiles, 
         profilesInitialState);

@@ -20,8 +20,8 @@ const handleSignout = (e) => {
 
 function AppHeader() {
     const currentUser = localStorage.getItem('user')
-    const {pathname} =  useLocation();
-    console.log("pathname", pathname);
+    // const {pathname} =  useLocation();
+    // console.log("pathname", pathname);
 
     return (
         <Menu secondary pointing>            
@@ -36,13 +36,20 @@ function AppHeader() {
                 <Button as={Link} onClick={handleSignout} basic icon color="red">
                    <Icon name="logout"></Icon> 
                    Se déconnecter
-                   {/* <a href="#" onClick={handleSignout}></a> */}
                 </Button> 
                 
             </Menu.Item>
             }
-            {!currentUser && 
+             {!currentUser && 
             <Menu.Item position="right">
+                <Button as={Link} to="/auth/signup" basic icon color="blue">
+                   <Icon name="signup"></Icon> 
+                   S'inscrire
+                </Button> 
+            </Menu.Item>
+            }
+            {!currentUser && 
+            <Menu.Item>
                 <Button as={Link} to="/auth/login" basic icon color="green">
                    <Icon name="sign-in"></Icon> 
                    Se connecter
@@ -50,21 +57,6 @@ function AppHeader() {
             </Menu.Item>
             }
         </Menu>
-        // <Segment inverted clearing>
-        //     <SUHeader floated='left'>
-        //         Logo
-        //     </SUHeader>
-        //     {currentUser && 
-            
-        //     <SUHeader floated='right'>
-        //         {JSON.parse(currentUser).uid}
-        //         <a href="#" onClick={handleSignout}>Se déconnecter</a>
-        //     </SUHeader>
-        //     }      
-        //     <SUHeader floated='left'>
-        //         Profiles
-        //     </SUHeader>
-        // </Segment>
     )
 }
 

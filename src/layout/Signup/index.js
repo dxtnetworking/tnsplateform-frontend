@@ -1,15 +1,22 @@
 import React from 'react'
-import { Header as SUHeader, Form, Button, Grid, Segment } from 'semantic-ui-react';
+import { 
+  Form, 
+  Grid, 
+  Button,                             
+  Header as SUHeader, 
+  Segment } from 'semantic-ui-react';
 
-function SignupUI({form:{onChange, form, registerFormValid}}) {
+const SignupUI = ({
+  form: { onChange, form, registerFormValid, onSubmit, loading, fieldErrors }, 
+}) => {
     return (
       <Grid centered style={{ height: '100vh' }} >
         <Grid.Column  style={{ maxWidth: 450 }}>
           <SUHeader as='h2' textAlign='center'>
             S'inscrire!
           </SUHeader>
-          <Segment pilled >    
-            <Form>
+          <Segment >    
+            <Form>  
               <Form.Field>
                 <Form.Input 
                   value={form.prenom || ''}
@@ -17,7 +24,13 @@ function SignupUI({form:{onChange, form, registerFormValid}}) {
                   label="Prénom" 
                   type="text" 
                   name="prenom" 
-                  placeholder="Prénom"/>
+                  placeholder="Prénom"
+                  error={fieldErrors.prenom && {
+                    content: fieldErrors.prenom,
+                    pointing: "below"
+                    } 
+                  }
+                  />
               </Form.Field>
               <Form.Field>
                 <Form.Input 
@@ -26,7 +39,13 @@ function SignupUI({form:{onChange, form, registerFormValid}}) {
                   label="Nom" 
                   type="text" 
                   name="nom" 
-                  placeholder="Nom" />
+                  placeholder="Nom" 
+                  error={fieldErrors.nom && {
+                    content: fieldErrors.nom,
+                    pointing: "below"
+                    } 
+                  }
+                  />
               </Form.Field>
               <Form.Field>
                 <Form.Input 
@@ -35,7 +54,14 @@ function SignupUI({form:{onChange, form, registerFormValid}}) {
                   label="Email" 
                   type="email" 
                   name="email" 
-                  placeholder="Adresse email" />
+                  placeholder="Adresse email"
+                  error={fieldErrors.email && {
+                    content:fieldErrors.email,
+                    pointing: "below"
+                    }
+                  } 
+                  />
+                  
               </Form.Field>
               <Form.Field>
                 <Form.Input 
@@ -44,12 +70,21 @@ function SignupUI({form:{onChange, form, registerFormValid}}) {
                   label="Mot de passe" 
                   type="password" 
                   name="password" 
-                  placeholder="Mot de passe" />
+                  placeholder="Mot de passe" 
+                  error={fieldErrors.password && {
+                    content: fieldErrors.password,
+                    pointing: "below"
+                    } 
+                  }
+                  />
+                  
               </Form.Field>
               <Button 
-                disabled={!registerFormValid} 
+                disabled={!registerFormValid || loading} 
+                onClick={onSubmit}
+                loading={loading}
                 type="submit" 
-                color="primary" 
+                primary
                 fluid>S'inscrire</Button>
             </Form>
           </Segment>

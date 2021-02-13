@@ -42,7 +42,7 @@ class Login extends React.Component {
                   <input type="password" name="password" ref={(input) => this.password = input}/>
                 </div>
                 <div>
-                  <Button type="submit" color="primary" size="large">Se connecter</Button>
+                  <Button type="submit" primary size="large">Se connecter</Button>
                 </div>
               </form>
             </Segment>
