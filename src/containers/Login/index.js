@@ -1,24 +1,13 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import AppHeader from './../../components/AppHeader';
-import Login from './../../components/Login';
-import { GlobalContext } from './../../context/Provider';
+import LoginUI from './../../layout/Login/index';
+import useForm from './useForm';
 
 function LoginContainer() {
-
-    const { 
-        authDispatch, 
-        authState:{
-            auth: { loading, error, data }
-             },
-        } = useContext(GlobalContext);
-
-    console.log("data", data?.data);
-
     return (
         <div>
             <AppHeader/>
-            {/* <Login/> */}
-            <h1>{data ? `Bienvenue ${data?.data.prenom.toUpperCase()} ${data?.data.nom.toUpperCase()}` : "Se connecter"}</h1>
+            <LoginUI form={useForm()}/>
         </div>
     )
 }

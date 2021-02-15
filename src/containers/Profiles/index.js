@@ -1,11 +1,16 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Container } from 'semantic-ui-react';
 import { GlobalContext } from '../../context/Provider';
 import AppHeader from './../../components/AppHeader';
+import getProfiles from '../../context/actions/profiles/getProfiles';
 
 function ProfileContainer() {
     const context = useContext(GlobalContext);
-    console.log(context);
+
+    useEffect(() => {
+        getProfiles();
+    }, [])
+
     return (
         <div>
             <AppHeader/>

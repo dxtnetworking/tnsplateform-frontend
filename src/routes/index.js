@@ -8,22 +8,26 @@ const routes = [
     { 
         path: '/auth/login',
         component: LoginComponent,
-        title: "Se connecter"
+        title: "Se connecter",
+        needsAuth: false,
     },
     { 
         path: '/auth/signup',
         component: SignupComponent,
-        title: "S'inscrire"
+        title: "S'inscrire",
+        needsAuth: false,
     },
     { 
         path: '/profiles',
         component: ProfilesComponent,
-        title: "Liste des membres"
+        title: "Liste des membres",
+        needsAuth: true,
     },
     { 
         path: '/',
         component: AccueilComponent,
-        title: "Accueil"
+        title: "Accueil",
+        needsAuth: false
     },  
 ]
 

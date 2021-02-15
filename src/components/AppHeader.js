@@ -1,8 +1,8 @@
 import React from "react";
 import axios from 'axios'
 import logo from "../assets/images/logo.PNG"
-import { Header as SUHeader, Menu, Icon, Image, Button, Segment } from 'semantic-ui-react'
-import { Link, useLocation } from "react-router-dom";
+import { Menu, Icon, Image, Button } from 'semantic-ui-react'
+import { Link } from "react-router-dom";
 
 const handleSignout = (e) => {
     e.preventDefault();
@@ -18,10 +18,9 @@ const handleSignout = (e) => {
 
 }
 
+
 function AppHeader() {
-    const currentUser = localStorage.getItem('user')
-    // const {pathname} =  useLocation();
-    // console.log("pathname", pathname);
+    const currentUser = localStorage.getItem('user');
 
     return (
         <Menu secondary pointing>            
