@@ -2,8 +2,10 @@
 import { 
     SIGNUP_ERROR, 
     SIGNUP_LOADING,
-    SIGNUP_SUCCESS } from '../../../constants/actionTypes/index';
-import axiosInstance from '../../../helpers/axios';
+    SIGNUP_SUCCESS,
+ } from '../../../constants/actionTypes/index';
+ import { CONNECTION_ERROR } from '../../../constants/api';
+import axiosInstance from '../../../helpers/axiosInstance';
 
 export const signup = ({
     prenom, 
@@ -14,7 +16,7 @@ export const signup = ({
     dispatch({
         type: SIGNUP_LOADING,
     });
-    axiosInstance
+    axiosInstance()
     .post('/auth', {prenom, nom, email, password}) // TODO: Corriger le lien
     .then((res) => {
         dispatch({
@@ -25,7 +27,7 @@ export const signup = ({
     .catch((err) => {
         dispatch({
             type: SIGNUP_ERROR,
-            payload: err.response.data.errors
+            payload: err.response ? err.response.data.errors : CONNECTION_ERROR
         });
     });
 }

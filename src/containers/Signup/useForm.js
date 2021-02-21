@@ -35,7 +35,7 @@ export default () => {
         setForm({...form, [name]: value});
     }
 
-    console.log("form", form);
+    
 
     const registerFormValid = 
         form.prenom?.length && 

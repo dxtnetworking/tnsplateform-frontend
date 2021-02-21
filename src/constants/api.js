@@ -1,0 +1,1 @@
+export const CONNECTION_ERROR = "Impossible de se connecter au serveur"

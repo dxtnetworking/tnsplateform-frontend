@@ -2,12 +2,7 @@
 export default {
     profiles: {
         loading: false,
-        data: null,
+        data: [],
         error: null,
-    },
-    completeProfile: {
-        loading: false,
-        data: null,
-        error: null,
-    },
+    }
 };
