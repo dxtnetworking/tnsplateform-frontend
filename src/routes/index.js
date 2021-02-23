@@ -1,6 +1,7 @@
 import LoginComponent from '../containers/Login'
 import SignupComponent from '../containers/Signup'
 import ProfilesComponent from '../containers/Profiles'
+import ProfileComponent from '../containers/Profile'
 import AccueilComponent from '../containers/Accueil'
 
 
@@ -16,6 +17,12 @@ const routes = [
         component: SignupComponent,
         title: "S'inscrire",
         needsAuth: false,
+    },
+    { 
+        path: `/profiles/:id`,
+        component: ProfileComponent,
+        title: "Profile de ...",
+        needsAuth: true,
     },
     { 
         path: '/profiles',

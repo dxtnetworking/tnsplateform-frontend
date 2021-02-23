@@ -1,12 +1,29 @@
-import axiosInstance from "../../../helpers/axios"
+import { CONNECTION_ERROR } from "../../../constants/api";
+import axiosInstance from "../../../helpers/axiosInstance"
+import { 
+    PROFILES_LOADING, 
+    PROFILES_LOAD_SUCCESS,
+    PROFILES_LOAD_ERROR,
+} from './../../../constants/actionTypes/index';
 
 /* eslint-disable import/no-anonymous-default-export */
-export default() => {
-    const currentUser = localStorage.getItem('user');
+export default (history) => (dispatch) => {    
+    dispatch({
+        type: PROFILES_LOADING,
+    });
 
-    axiosInstance
-        // .get('/profiles', {withCredentials: true})
-        .get('/profiles', {headers: JSON.parse(currentUser)})
-        .then(res => { console.log("data", res.data)})
-        .catch(err => { console.log("errors", err) })
+    axiosInstance(history)
+        .get('/profiles')
+        .then(res => { 
+            dispatch({
+                type: PROFILES_LOAD_SUCCESS,
+                payload: res.data,
+            });
+        })
+        .catch(err => {
+            dispatch({
+                type: PROFILES_LOAD_ERROR,
+                payload: err.response ? err.response.data : CONNECTION_ERROR
+            });
+        });
 }

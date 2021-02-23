@@ -1,8 +1,12 @@
 import { 
     LOGIN_ERROR, 
     LOGIN_LOADING,
-    LOGIN_SUCCESS } from '../../../constants/actionTypes/index';
-import axiosInstance from '../../../helpers/axios';
+    LOGIN_SUCCESS,
+ } from '../../../constants/actionTypes/index';
+import { CONNECTION_ERROR } from '../../../constants/api';
+
+
+import axiosInstance from '../../../helpers/axiosInstance';
 
 export const login = ({
     email, 
@@ -11,15 +15,9 @@ export const login = ({
     dispatch({
         type: LOGIN_LOADING,
     });
-    axiosInstance
-    .post('/auth/sign_in', {email, password}) // TODO: Corriger le lien
+    axiosInstance()
+    .post('/auth/sign_in', {email, password})
     .then((res) => {
-        console.log("My Headers", res.headers);
-       
-        axiosInstance.get('/auth/validate_token', {...res.headers})
-
-    
-
         localStorage.setItem('user',
             JSON.stringify({
                 'uid': res.data.data.uid,
@@ -38,7 +36,7 @@ export const login = ({
     .catch((err) => {
         dispatch({
             type: LOGIN_ERROR,
-            payload: err.response ? err.response.data.errors : "Impossible de se connecter"
+            payload: err.response ? err.response.data.errors : CONNECTION_ERROR
         });
     });
 }

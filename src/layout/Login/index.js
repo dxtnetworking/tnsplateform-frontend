@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { 
   Form, 
   Grid, 
@@ -48,6 +49,9 @@ const LoginUI = ({
                 type="submit" 
                 primary
                 fluid>Se connecter</Button>
+                <Segment>
+                  Pas encore inscrit? <Link to="/auth/signup">S'inscrire</Link>
+                </Segment>
             </Form>
           </Segment>
         </Grid.Column>

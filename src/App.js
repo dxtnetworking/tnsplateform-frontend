@@ -9,11 +9,13 @@ import isAuthenticated from "./utils/isAuthenticated";
 
 // const currentUser = function() {
 //   const user = localStorage.getItem('user')
-//   console.log(user)
+//   
 //   return(user)
 // }
 const RenderRoute = (route) => {
   const history = useHistory();
+
+  document.title = route.title || 'DXTC Networking'
 
   if (route.needsAuth && !isAuthenticated()) {
     history.push('/auth/login')
